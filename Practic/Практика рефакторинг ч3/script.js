@@ -25,7 +25,7 @@ const personalMovieDB = {
     movies: {},
     actors: {},
     genres: [],
-    privat: false,
+    privat: true,
     toggleVisibleMyDB() {
         if (personalMovieDB.privat === false) {
             personalMovieDB.privat = true;
@@ -82,13 +82,12 @@ const personalMovieDB = {
         });
     }
 };
-personalMovieDB.numberFilms();
-personalMovieDB.detectPersonalLevel();
-personalMovieDB.rememberMyFilms();
+// personalMovieDB.numberFilms();
+// personalMovieDB.detectPersonalLevel();
+// personalMovieDB.rememberMyFilms();
+// personalMovieDB.writeYourGenres();
+// personalMovieDB.toggleVisibleMyDB();
+// personalMovieDB.liveJanre();
+// personalMovieDB.showMyDB();
 
-personalMovieDB.writeYourGenres();
-personalMovieDB.toggleVisibleMyDB();
-personalMovieDB.showMyDB();
-personalMovieDB.liveJanre();
-
-console.log(personalMovieDB);
+//console.log(personalMovieDB);
