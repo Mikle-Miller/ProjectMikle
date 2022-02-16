@@ -42,6 +42,8 @@ window.addEventListener('DOMContentLoaded', function () {
         tabsContent = document.querySelectorAll('.tabcontent'),
         tabsParent = document.querySelector('.tabheader__items');
 
+
+
     function hideTabContent() {
 
         tabsContent.forEach(item => {
