@@ -144,14 +144,22 @@ window.addEventListener('DOMContentLoaded', function () {
     //     });
     // });
 
+    function openModal() {
+
+        modal.classList.add('show');
+        modal.classList.remove('hide');
+        document.body.style.overflow = 'hidden';
+        clearInterval(modalTime);
+    }
+
     modalWindow.forEach(btn => {
         btn.addEventListener('click', () => {
             //modal.classList.toggle('show');// Переключатель, альт. вариант
-            modal.classList.add('show');
-            modal.classList.remove('hide');
-            document.body.style.overflow = 'hidden';
+            openModal();
         });
     });
+
+
 
     function closeModal() {
         //modal.classList.toggle('show');
@@ -176,6 +184,18 @@ window.addEventListener('DOMContentLoaded', function () {
             closeModal();
         }
     });
+
+    const modalTime = setTimeout(openModal, 5000);
+
+    function showModalByScroll() {
+        if (window.pageYOffset + document.documentElement.clientHeight >= document.documentElement.scrollHeight) {
+            openModal();
+            window.removeEventListener('scroll', showModalByScroll);
+        }
+    }
+
+    
+    window.addEventListener('scroll', showModalByScroll);
     // close.addEventListener('click', () => {
     //     modalWindow.classList.add('hide');
     //     modalWindow.classList.remove('show');
