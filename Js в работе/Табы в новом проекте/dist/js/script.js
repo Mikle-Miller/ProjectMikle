@@ -1,39 +1,39 @@
-// window.addEventListener('DOMContentLoaded', () => {
+//  window.addEventListener('DOMContentLoaded', () => {
 
 
-//     const tabs = document.querySelectorAll('.tabheader__item'),
-//         tabsContent = document.querySelectorAll('.tabcontent'),
-//         tabsParent = document.querySelector('.tabheader__items');
+//      const tabs = document.querySelectorAll('.tabheader__item'),
+//          tabsContent = document.querySelectorAll('.tabcontent'),
+//          tabsParent = document.querySelector('.tabheader__items');
 
-//     function hideTabContent() {
-//         tabsContent.forEach(item => {
-//             item.style.display = 'none';
-//         });
-//         tabs.forEach(item => {
-//             item.classList.remove('tabheader__item_active');
-//         });
-//     }
+//      function hideTabContent() {
+//          tabsContent.forEach(item => {
+//              item.style.display = 'none';
+//          });
+//          tabs.forEach(item => {
+//              item.classList.remove('tabheader__item_active');
+//          });
+//      }
 
-//     function showTabContent(i = 0) {
-//         tabsContent[i].style.display = 'block';
-//         tabs[i].classList.add('tabheader__item_active');
-//     }
+//      function showTabContent(i = 0) {
+//          tabsContent[i].style.display = 'block';
+//          tabs[i].classList.add('tabheader__item_active');
+//      }
 
-//     hideTabContent();
-//     showTabContent();
+//      hideTabContent();
+//      showTabContent();
 
-//     tabsParent.addEventListener('click', (event) => {
-//         const target = event.target;
-//         if (target && target.classList.contains('.tabheader__item')) {
-//             tabs.forEach((item, i) => {
-//                 if (target == item) {
-//                     hideTabContent();
-//                     showTabContent(i);
-//                 }
-//             });
-//         }
-//     });
-// });
+//      tabsParent.addEventListener('click', (event) => {
+//          const target = event.target;
+//          if (target && target.classList.contains('.tabheader__item')) {
+//              tabs.forEach((item, i) => {
+//                  if (target == item) {
+//                      hideTabContent();
+//                      showTabContent(i);
+//                  }
+//              });
+//          }
+//      });
+//  });
 window.addEventListener('DOMContentLoaded', function () {
 
     // Tabs
@@ -77,6 +77,7 @@ window.addEventListener('DOMContentLoaded', function () {
             });
         }
     });
+
 
     // Timer 
 
@@ -129,4 +130,64 @@ window.addEventListener('DOMContentLoaded', function () {
         }
     }
     setClock('.timer', deadline);
+
+    // Modal
+
+
+    const modalWindow = document.querySelectorAll('[data-modal]'),
+        modal = document.querySelector('.modal'),
+        close = document.querySelector('[data-close]');
+
+    // btns.addEventListener('click', () => {
+    //     btns.forEach(() => {
+    //         display.style.display = 'block';
+    //     });
+    // });
+
+    modalWindow.forEach(btn => {
+        btn.addEventListener('click', () => {
+            //modal.classList.toggle('show');// Переключатель, альт. вариант
+            modal.classList.add('show');
+            modal.classList.remove('hide');
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    function closeModal() {
+        //modal.classList.toggle('show');
+        modal.classList.add('hide');
+        modal.classList.remove('show');
+        document.body.style.overflow = '';
+    }
+
+    close.addEventListener('click', closeModal);
+
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            closeModal();
+            // modal.classList.add('hide');
+            // modal.classList.remove('show');
+            // document.body.style.overflow = '';
+        }
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.code === "Escape" && modal.classList.contains('show')) {
+            closeModal();
+        }
+    });
+    // close.addEventListener('click', () => {
+    //     modalWindow.classList.add('hide');
+    //     modalWindow.classList.remove('show');
+    // });
+    // close.addEventListener('click', () => {
+    //     display.style.display = 'none';
+    // });
+    // btn2.addEventListener('click', () => {
+    //     display.style.display = 'block';
+    // });
+    // close.addEventListener('click', () => {
+    //     display.style.display = 'none';
+    // });
+
 });
